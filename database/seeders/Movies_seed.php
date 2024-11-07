@@ -167,14 +167,20 @@ class Movies_seed extends Seeder
                 'screening_times' => $movieData['screening_times'],
                 'ticket_price' => $movieData['ticket_price'],
             ]);
-
-            
+        
+            $genreIds = [];
+        
             foreach ($movieData['genre'] as $genreName) {
-                $genre = Genre::firstOrCreate(['name' => $genreName]);
-                $genreIds[] = $genre->id;
+                
+                $individualGenres = array_map('trim', explode(',', $genreName));
+                
+                foreach ($individualGenres as $genre) {
+                    $genreInstance = Genre::firstOrCreate(['name' => $genre]);
+                    $genreIds[] = $genreInstance->id;
+                }
             }
-    
-            // Attach genres to the movie
+        
+            
             $movie->genres()->sync($genreIds);
         }
     }

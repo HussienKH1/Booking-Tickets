@@ -21,6 +21,14 @@ class DatabaseSeeder extends Seeder
             Movies_seed::class,
         ]);
 
+        $this->call([
+            events_type::class,
+        ]);
+
+        $this->call([
+            events::class,
+        ]);
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',

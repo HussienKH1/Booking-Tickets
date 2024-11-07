@@ -9,11 +9,6 @@ class Event extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'title',
         'event_type',
@@ -33,8 +28,13 @@ class Event extends Model
      */
     protected $casts = [
         'event_date' => 'date',
-        'event_time' => 'time',
+        'event_time' => 'string',
         'availability_status' => 'boolean',
         'ticket_price' => 'decimal:2',
     ];
+
+    public function eventType()
+    {
+        return $this->belongsTo(Event_Type::class, 'event_type', 'name');
+    }
 }
