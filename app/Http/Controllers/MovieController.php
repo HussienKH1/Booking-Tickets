@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
+use App\Models\Event_Type;
+use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\Sport_type;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -10,23 +14,51 @@ class MovieController extends Controller
     /**
      * Display a listing of the movies.
      */
-    public function index()
+    public function movies()
     {
         $movies = Movie::all();
-        return view('movies.index', compact('movies'));
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        return view('movies', compact('movies', 'genres', 'event_types', 'sporttypes'));
     }
 
-    /**
-     * Show the form for creating a new movie.
-     */
-    public function create()
+    public function filterByGenre($id)
     {
-        return view('movies.create');
+        $genre = Genre::findOrFail($id);
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        $movies = Movie::whereHas('genres', function ($query) use ($id) {
+            $query->where('genre_id', $id);
+        })->get();
+
+        return view('movies', compact('movies', 'genres', 'event_types', 'sporttypes'));
     }
 
-    /**
-     * Store a newly created movie in storage.
-     */
+    public function filterMovies(Request $request)
+    {
+        $selectedGenres = $request->input('genres', []);
+
+        $movies = Movie::when(!empty($selectedGenres), function ($query) use ($selectedGenres) {
+            return $query->whereHas('genres', function ($q) use ($selectedGenres) {
+                $q->whereIn('genre_id', $selectedGenres);
+            });
+        })->get();
+
+
+        return view('partials.movies_list', compact('movies'))->render();
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $movies = Movie::where('title', 'like', '%' . $query . '%')->get();
+
+        return view('partials.movies_list', compact('movies'))->render();;
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -52,17 +84,11 @@ class MovieController extends Controller
         return redirect()->route('movies.index')->with('success', 'Movie created successfully.');
     }
 
-    /**
-     * Display the specified movie.
-     */
     public function show(Movie $movie)
     {
         return view('movies.show', compact('movie'));
     }
 
-    /**
-     * Show the form for editing the specified movie.
-     */
     public function edit(Movie $movie)
     {
         return view('movies.edit', compact('movie'));

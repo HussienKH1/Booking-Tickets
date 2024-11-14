@@ -33,7 +33,7 @@ class events extends Seeder
                 'location' => 'O2 Arena, London, UK',
                 'description' => 'Adele performing her greatest hits in a magical concert event.',
                 'ticket_price' => 180.00,
-                'poster_url' => 'https://static.wikia.nocookie.net/adeles/images/8/88/Weekends_with_Adele_%28Second_Leg%29_.jpg/revision/latest?cb=20230409231939',
+                'poster_url' => 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/ea1a60159177289.63ade0fe388eb.jpg',
                 'availability_status' => true,
             ],
 

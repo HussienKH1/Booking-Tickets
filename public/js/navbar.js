@@ -11,7 +11,6 @@ window.addEventListener("scroll", () => {
         navbar.classList.remove("py-4")
         navbar.classList.add("bg-transparent");
         navbar.classList.add("py-8")
-
     }
 });
 

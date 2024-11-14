@@ -78,3 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const eventCards = document.querySelectorAll('.group');
+    eventCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('opacity-100', 'translate-y-0');
+        }, index * 100); // Stagger the animation
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('timeline-container');
+    
+    function scrollLeft() {
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+
+    function scrollRight() {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+    
+    // Add event listeners for the buttons
+    const leftButton = document.getElementById('left-button');
+    const rightButton = document.getElementById('right-button');
+    
+    leftButton.addEventListener('click', scrollLeft);
+    rightButton.addEventListener('click', scrollRight);
+});
+

@@ -29,6 +29,14 @@ class DatabaseSeeder extends Seeder
             events::class,
         ]);
 
+        $this->call([
+            sports_type::class,
+        ]);
+
+        $this->call([
+            sports::class,
+        ]);
+
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',

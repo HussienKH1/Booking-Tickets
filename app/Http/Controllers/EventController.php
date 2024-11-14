@@ -3,30 +3,52 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Event_Type;
+use App\Models\Genre;
+use App\Models\Sport_type;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function events()
     {
         $events = Event::all();
-        return view('events.index', compact('events'));
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        return view('events', compact('events', 'genres', 'event_types', 'sporttypes'));
+    }
+    
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $events = Event::where('title', 'like', '%' . $query . '%')->get();
+        return view('partials.events_list', compact('events'))->render();;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function filterEvents(Request $request)
+    {
+        $query = Event::query();
+
+        if ($request->has('event_types')) {
+            $eventTypes = $request->input('event_types');
+            $query->whereHas('eventType', function($query) use ($eventTypes) {
+                $query->whereIn('id', $eventTypes);
+            })->get();
+        }
+
+        $events = $query->get();
+        
+        return view('partials.events_list', compact('events'))->render();
+    }
+
+
     public function create()
     {
         return view('events.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,17 +68,11 @@ class EventController extends Controller
         return redirect()->route('events.index')->with('success', 'Event created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Event $event)
     {
         return view('events.show', compact('event'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Event $event)
     {
         return view('events.edit', compact('event'));
