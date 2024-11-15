@@ -30,18 +30,64 @@
         </div>
     </div>
 
-
-
     <section class="flex flex-row gap-6 px-6">
-        <div id="sports-filter" data-url="{{ route('filter.events') }}">
+        <div id="events-filter" data-url="{{ route('filter.events') }}">
             @include('filter', ['event_types' => $event_types, 'genres' => null, 'sportTypes' => null])
         </div>
-        <div class="container mx-auto" id="sports-list">
+        <div class="container mx-auto" id="events-list">
             @include('partials.events_list', ['events' => $events])
         </div>
 
     </section>
-    <script src="{{asset('js/events.js')}}"></script>
+    <script >
+        $(document).ready(function() {
+    let filterUrl = $('#events-filter').data('url');
+
+    $('.filter-checkbox').on('change', function() {
+        let selectedEventTypes = [];
+
+        $('.filter-checkbox:checked').each(function() {
+            selectedEventTypes.push($(this).val());
+        });
+
+        $.ajax({
+            url: filterUrl,
+            type: 'GET',
+            data: {
+                event_types: selectedEventTypes
+            },
+            success: function(response) {
+                $('#events-list').html(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+    let searchUrl = $('#events-search').data('url');
+
+    $('#event-search').on('keyup', function() {
+        let searchTerm = $(this).val();
+
+        $.ajax({
+            url: searchUrl,
+            type: 'GET',
+            data: {
+                query: searchTerm
+            },
+            success: function(response) {
+                $('#events-list').html(response);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+});
+    </script>
 </body>
 
 </html>

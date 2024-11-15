@@ -7,7 +7,6 @@ $(document).ready(function() {
         $('.filter-checkbox:checked').each(function() {
             selectedEventTypes.push($(this).val());
         });
-
         $.ajax({
             url: filterUrl,
             type: 'GET',
@@ -23,6 +22,7 @@ $(document).ready(function() {
         });
     });
 });
+
 
 $(document).ready(function() {
     let searchUrl = $('#events-search').data('url');

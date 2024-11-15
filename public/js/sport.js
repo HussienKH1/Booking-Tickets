@@ -7,7 +7,7 @@ $(document).ready(function() {
         $('.filter-checkbox:checked').each(function() {
             selectedSportTypes.push($(this).val());
         });
-
+        console.log('Hello', selectedSportTypes)
         $.ajax({
             url: filterUrl,
             type: 'GET',
