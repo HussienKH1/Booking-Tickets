@@ -1,51 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/navbar.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/login.css')}}">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <header>
         @include('navbar')
     </header>
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Login</h2>
-        
-        <form action="#" method="POST">
-            @CSRF
-            <div class="mb-6">
-                <label for="email" class="block text-sm font-semibold text-gray-600">Email</label>
-                <input type="email" id="email" name="email" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" required>
+
+    <section class="login-container relative h-screen">
+        <div class="swiper-container absolute inset-0 z-0">
+            <div class="swiper mySwiper w-full h-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide "><img src="{{asset('images/Party.jpg')}}" class="w-full h-full object-cover" /></div>
+                    <div class="swiper-slide "><img src="{{asset('images/movies.jpg')}}" class="w-full h-full object-cover" /></div>
+                    <div class="swiper-slide ">
+                        <div class="relative w-full h-full">
+                            <img src="{{asset('images/sport.jpg')}}" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-black opacity-50"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-6">
-                <label for="password" class="block text-sm font-semibold text-gray-600">Password</label>
-                <input type="password" id="password" name="password" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required>
-            </div>
-
-            <div class="flex items-center justify-between mb-6">
-                <label for="remember" class="flex items-center text-sm text-gray-600">
-                    <input type="checkbox" id="remember" class="form-checkbox text-blue-500 rounded-md">
-                    <span class="ml-2">Remember Me</span>
-                </label>
-                <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
-            </div>
-
-            <button type="submit" class="w-full p-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">Login</button>
-        </form>
-
-        <div class="mt-6 text-center">
-            <span class="text-sm text-gray-600">Don't have an account?</span>
-            <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Sign Up</a>
         </div>
-    </div>
-</div>
-
+        <div class="flex justify-center items-center h-full z-10 relative">
+            <div class="lform relative w-[25vw] h-[70vh] bg-transparent border-2 border-white/30 rounded-2xl backdrop-blur-lg shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex justify-center items-center transition-height ease-in-out duration-200">
+                <div class="login-form w-full px-12">
+                    <h2 class="text-3xl text-[#ff007f] text-center font-bold tracking-wide">Login</h2>
+                    <form method="POST" action="">
+                        @csrf
+                        <div class="input-box relative w-full h-[50px] border-b-2 border-white/20 my-[24px]">
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                required
+                                class="peer w-full h-full bg-transparent border-none outline-none text-white text-base font-medium pl-2 pr-10 tracking-wide"
+                                placeholder=" ">
+                            <label
+                                for="email"
+                                class="absolute left-2 top-[-5px] text-sm text-[#ff007f] font-medium transition-all duration-500 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:translate-y-[-50%] peer-placeholder-shown:text-white peer-placeholder-shown:text-base peer-focus:top-[-5px] peer-focus:text-sm peer-focus:text-[#ff007f]">
+                                Email
+                            </label>
+                            <span class="icon absolute right-3 text-xl text-white leading-[48px]">
+                                <ion-icon name="mail"></ion-icon>
+                            </span>
+                        </div>
+                        <div class="input-box relative w-full h-[50px] border-b-2 border-white/20 my-[24px]">
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                required
+                                class="peer w-full h-full bg-transparent border-none outline-none text-white text-base font-medium pl-2 pr-10 tracking-wide"
+                                placeholder=" ">
+                            <label
+                                for="password"
+                                class="absolute left-2 top-[-5px] text-sm text-[#ff007f] font-medium transition-all duration-500 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:translate-y-[-50%] peer-placeholder-shown:text-white peer-placeholder-shown:text-base peer-focus:top-[-5px] peer-focus:text-sm peer-focus:text-[#ff007f]">
+                                Password
+                            </label>
+                            <span class="icon absolute right-3 text-xl text-white leading-[48px]">
+                                <ion-icon name="key"></ion-icon>
+                            </span>
+                        </div>
+                        <div class="remember-forgot flex justify-between text-sm text-[#ff007f] font-medium mt-[-10px] mb-5">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="remember" id="remember" class="accent-[#ff007f] mr-2">
+                                Remember me
+                            </label>
+                            <a href="#" class="text-white hover:text-[#ff007f] hover:underline">Forgot Password?</a>
+                        </div>
+                        <button
+                            type="submit"
+                            class="relative w-full h-[45px] bg-transparent text-white text-lg font-semibold overflow-hidden rounded-md group">
+                            <span class="relative z-10">Login</span>
+                            <div class="absolute inset-0 border-2 border-transparent rounded-md transition-all duration-300 group-hover:border-[#ff007f]"></div>
+                            <div class="absolute inset-0 rounded-md bg-gradient-to-r from-[#ff007f] via-transparent to-[#ff007f] animate-spin-border opacity-0 group-hover:opacity-100"></div>
+                        </button>
+                        <div class="login-register mt-6 text-center text-sm text-white font-medium">
+                            <p>Don't have an account? <a href="{{asset('signup')}}" class="text-white hover:text-[#ff007f] hover:underline register-link">Click Here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
+
 </html>

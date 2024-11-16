@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-between {{ request()->is('/') || request()->is('home') ? 'py-8' : 'py-4' }} px-8 {{ request()->is('/') || request()->is('home') ? 'bg-transparent' : 'bg-[#0b0b22]' }} {{ request()->is('/') || request()->is('home') ? 'fixed' : '' }}  z-50 w-full transition-all duration-1000">
+<nav class="flex items-center justify-between {{ request()->is('/') || request()->is('home') || request()->is('login') || request()->is('signup') ? 'py-8' : 'py-4' }} px-8 {{ request()->is('/') || request()->is('home') || request()->is('login') || request()->is('signup') ? 'bg-transparent' : 'bg-[#0b0b22]' }} {{ request()->is('/') || request()->is('home') || request()->is('login') || request()->is('signup') ? 'fixed' : '' }}  z-50 w-full transition-all duration-1000">
     <div class="flex items-center">
         <img src="" alt="Logo" class="w-8 h-8 mr-2">
         <span class="text-[#ffffff] text-lg font-bold">TICKET<span class="text-[#ff007f]">TRAIL</span></span>

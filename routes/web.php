@@ -19,7 +19,8 @@ Route::get('/filter-events', [EventController::class, 'filterEvents'])->name('fi
 Route::get('/sports', [SportController::class, 'sports'])-> name ('sports');
 Route::get('/filter-sports', [SportController::class, 'filterSports'])->name('filter.sports');
 Route::get('/login',[MainController::class, 'login'])->name('login');
+Route::get('/signup',[MainController::class, 'signup'])->name('signup');
 Route::get('/events/type/{id}', [EventController::class, 'typefilter'])->name('events.typefilter');
-
+Route::get('/booking', [MainController::class, 'booking'])->name('booking')->middleware('auth');
 
 

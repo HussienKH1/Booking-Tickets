@@ -29,4 +29,15 @@ class MainController extends Controller
         $sporttypes = Sport_type::all();
         return view('auth.login', compact('genres', 'event_types', 'sporttypes'));
     }
+
+    public function signup(){
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        return view('auth.signup', compact('genres', 'event_types', 'sporttypes'));
+    }
+
+    public function booking (){
+        return view ('booking');
+    }
 }

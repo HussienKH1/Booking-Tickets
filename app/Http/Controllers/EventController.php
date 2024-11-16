@@ -78,9 +78,6 @@ class EventController extends Controller
         return view('events.edit', compact('event'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Event $event)
     {
         $request->validate([
@@ -100,9 +97,6 @@ class EventController extends Controller
         return redirect()->route('events.index')->with('success', 'Event updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Event $event)
     {
         $event->delete();

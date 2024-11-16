@@ -1,0 +1,61 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes spin-border {
+  0% {
+      background-position: 0% 100%;
+  }
+
+  100% {
+      background-position: 100% 50%;
+  }
+}
+.animate-spin-border {
+  background-size: 200% 200%;
+  animation: spin-border 1.5s linear infinite;
+}
+  
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Background color for autofilled fields */
+  -webkit-text-fill-color: white !important; /* Text color for autofilled fields */
+  background-color: transparent !important;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  background-color: transparent !important;
+}
