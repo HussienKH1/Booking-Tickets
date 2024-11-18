@@ -35,7 +35,7 @@ class Sport extends Model
         'availability_status' => 'boolean',
     ];
 
-    public function sport_type()
+    public function sportType()
     {
         return $this->belongsTo(Sport_type::class, 'sport_type', 'name');
     }

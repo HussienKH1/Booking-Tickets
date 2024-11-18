@@ -40,4 +40,6 @@ class MainController extends Controller
     public function booking (){
         return view ('booking');
     }
+
+    
 }

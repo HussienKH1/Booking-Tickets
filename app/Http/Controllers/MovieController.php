@@ -84,9 +84,14 @@ class MovieController extends Controller
         return redirect()->route('movies.index')->with('success', 'Movie created successfully.');
     }
 
-    public function show(Movie $movie)
+    public function show($id)
     {
-        return view('movies.show', compact('movie'));
+        $movie = Movie::findOrFail($id);
+        $movies = Movie::all();
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        return view('movie_detail', compact('movie', 'genres', 'event_types', 'sporttypes'));
     }
 
     public function edit(Movie $movie)

@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SportController;
 
-Route::get('/', [MainController::class, 'Home']);
+
+Route::get('/', [MainController::class, 'home']);
 Route::get('/home', [MainController::class, 'Home'])->name('home');
 Route::get('/movies', [MovieController::class, 'movies'])->name('movies');
 Route::get('/movies/filter', [MovieController::class, 'filterMovies'])->name('movies.filter');
@@ -20,7 +23,11 @@ Route::get('/sports', [SportController::class, 'sports'])-> name ('sports');
 Route::get('/filter-sports', [SportController::class, 'filterSports'])->name('filter.sports');
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/signup',[MainController::class, 'signup'])->name('signup');
-Route::get('/events/type/{id}', [EventController::class, 'typefilter'])->name('events.typefilter');
+Route::get('/events/type/{id}', [EventController::class, 'Eventsfilter'])->name('eventsfilter');
+Route::get('/sports/type/{id}', [SportController::class, 'Sportsfilter'])->name('sportsfilter');
 Route::get('/booking', [MainController::class, 'booking'])->name('booking')->middleware('auth');
-
+Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movie_detail');
+Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 

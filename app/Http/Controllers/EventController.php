@@ -19,7 +19,7 @@ class EventController extends Controller
         $sporttypes = Sport_type::all();
         return view('events', compact('events', 'genres', 'event_types', 'sporttypes'));
     }
-    
+
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -33,14 +33,27 @@ class EventController extends Controller
 
         if ($request->has('event_types')) {
             $eventTypes = $request->input('event_types');
-            $query->whereHas('eventType', function($query) use ($eventTypes) {
+            $query->whereHas('eventType', function ($query) use ($eventTypes) {
                 $query->whereIn('id', $eventTypes);
             })->get();
         }
 
         $events = $query->get();
-        
+
         return view('partials.events_list', compact('events'))->render();
+    }
+
+    public function Eventsfilter($id)
+    {
+
+        $event_type = Event_Type::findOrFail($id);
+        $genres = Genre::all();
+        $sporttypes = Sport_type::all();
+        $event_types = Event_Type::all();
+        $events = Event::whereHas('eventType', function ($query) use ($event_type) {
+            $query->where('id', $event_type->id);
+        })->get();
+        return view('events', compact('events', 'genres', 'event_types', 'sporttypes'));
     }
 
 

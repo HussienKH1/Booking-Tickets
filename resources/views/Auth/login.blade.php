@@ -38,7 +38,7 @@
             <div class="lform relative w-[25vw] h-[70vh] bg-transparent border-2 border-white/30 rounded-2xl backdrop-blur-lg shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex justify-center items-center transition-height ease-in-out duration-200">
                 <div class="login-form w-full px-12">
                     <h2 class="text-3xl text-[#ff007f] text-center font-bold tracking-wide">Login</h2>
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route ('login')}}">
                         @csrf
                         <div class="input-box relative w-full h-[50px] border-b-2 border-white/20 my-[24px]">
                             <input

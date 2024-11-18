@@ -32,7 +32,7 @@
                         <span class="text-2xl font-semibold tracking-wide leading-snug drop-shadow-md slide-text slide-down">
                             Secure Your Tickets Now for an Unforgettable Experience!
                         </span>
-                        <a href="#" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
+                        <a href="{{asset ('movies')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
                             Book Now
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         <span class="text-2xl font-semibold tracking-wide leading-snug drop-shadow-md slide-text slide-down">
                             Book Your Tickets Now!
                         </span>
-                        <a href="#" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
+                        <a href="{{asset ('events')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
                             Book Now
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                         <span class="text-2xl font-semibold tracking-wide leading-snug drop-shadow-md slide-text slide-down">
                             Join the Action Today!
                         </span>
-                        <a href="#" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
+                        <a href="{{asset ('sports')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
                             Book Now
                         </a>
                     </div>
@@ -97,10 +97,10 @@
                         <p class="text-sm text-gray-400 mb-1 movie-genre"></p>
                         <p class="text-sm text-gray-400 mb-2 movie-synopsis"></p>
                         <p class="text-yellow-400 font-semibold movie-rating"></p>
-                        <a href="#" class="btn mt-4 bg-[#ff007f] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#ff007f]">
+                        <a href="{{ route('movie_detail', $movie->id)}}" class="btn mt-4 bg-[#ff007f] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#ff007f]">
                             View Details
                         </a>
-                        <a href="#" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
+                        <a href="{{asset ('booking')}}" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
                             Book Now
                         </a>
                     </div>
@@ -108,7 +108,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-12">
-                <a href="#" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
+                <a href="{{asset ('movies')}}" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
                     <span class="absolute inset-0 w-full h-full bg-white opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"></span>
                     <span class="relative z-10">View All Movies</span>
                     <span class="absolute right-0 bottom-0 w-20 h-20 bg-pink-500 opacity-50 rounded-full transform translate-x-1/2 translate-y-1/2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-in-out"></span>
@@ -141,7 +141,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-12">
-                <a href="#" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
+                <a href="{{asset ('events')}}" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
                     <span class="absolute inset-0 w-full h-full bg-white opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"></span>
                     <span class="relative z-10">View All Events </span>
                     <span class="absolute right-0 bottom-0 w-20 h-20 bg-pink-500 opacity-50 rounded-full transform translate-x-1/2 translate-y-1/2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-in-out"></span>
@@ -193,7 +193,7 @@
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
+                <a href="{{asset ('sports')}}" class="mt-8 inline-block px-8 py-3 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-500 relative overflow-hidden group shadow-lg transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl">
                     <span class="absolute inset-0 w-full h-full bg-white opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"></span>
                     <span class="relative z-10">View All Sports </span>
                     <span class="absolute right-0 bottom-0 w-20 h-20 bg-pink-500 opacity-50 rounded-full transform translate-x-1/2 translate-y-1/2 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-700 ease-in-out"></span>

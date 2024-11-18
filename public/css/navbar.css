@@ -28,7 +28,7 @@ nav .dropdown a::after {
 
 
 
-a.btn::before {
+.btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -41,14 +41,13 @@ a.btn::before {
     z-index: -1;
 }
 
-
-a.btn:hover::before {
+.btn:hover::before {
     transform: translateX(0);
 }
 
 
 
-a.btn::before {
+.btn::before {
     transform-origin: left;
 }
 
