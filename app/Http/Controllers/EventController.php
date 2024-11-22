@@ -56,6 +56,13 @@ class EventController extends Controller
         return view('events', compact('events', 'genres', 'event_types', 'sporttypes'));
     }
 
+    public function eventsbooking ($id){
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        $event = Event::findOrFail($id);
+        return view ('booking', compact('genres', 'event_types', 'sporttypes', 'event'));
+    }
 
     public function create()
     {

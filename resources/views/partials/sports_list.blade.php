@@ -19,7 +19,7 @@
                 @endif
                 <p class="text-[#faaC1D] text-lg font-extrabold mt-4">${{ number_format($event->ticket_price, 2) }}</p>
                 
-                <a href="{{asset ('booking')}}" class="btn mt-5 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
+                <a href="{{ route ('sportsbooking', $event->id)}}" class="btn mt-5 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
                     Book Now
                 </a>
             </div>

@@ -17,6 +17,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            if (Auth::user()->email === 'admin@gmail.com') {
+                return redirect()->route('admin.page')->with('success', 'You are logged in as Admin!');
+            }
             return redirect()->route('home')->with('success', 'You are logged in!');
         }
 

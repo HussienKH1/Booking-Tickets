@@ -94,6 +94,14 @@ class MovieController extends Controller
         return view('movie_detail', compact('movie', 'genres', 'event_types', 'sporttypes'));
     }
 
+    public function moviesbookig($id){
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        $movie = Movie::findOrFail($id);
+        return view('booking', compact('genres', 'event_types', 'sporttypes', 'movie'));
+    }
+
     public function edit(Movie $movie)
     {
         return view('movies.edit', compact('movie'));

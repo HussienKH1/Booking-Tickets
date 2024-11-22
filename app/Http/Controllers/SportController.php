@@ -54,4 +54,12 @@ class SportController extends Controller
         $sportsEvents = Sport::where('title', 'like', '%' . $query . '%')->get();
         return view('partials.sports_list', compact('sportsEvents'))->render();;
     }
+
+    public function sportsbooking($id){
+        $genres = Genre::all();
+        $event_types = Event_Type::all();
+        $sporttypes = Sport_type::all();
+        $sport = Sport::findOrFail($id);
+        return view('booking', compact('genres', 'event_types', 'sporttypes', 'sport'));
+    }
 }
