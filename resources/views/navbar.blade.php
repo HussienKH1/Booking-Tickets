@@ -55,7 +55,7 @@
                 </div>
             </li>
             <li>
-                <a href="#" class="menu-item relative hover:text-[#ff007f] transition duration-300 ease-in-out">CONTACT</a>
+                <a href="{{asset('contactus')}}" class="menu-item relative hover:text-[#ff007f] transition duration-300 ease-in-out">CONTACT</a>
             </li>
         </ul>
     </div>

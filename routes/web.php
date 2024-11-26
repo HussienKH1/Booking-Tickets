@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SportController; 
 use App\Http\Controllers\BookingController;
-
+use App\Http\Controllers\ContactUs;
 
 Route::get('/', [MainController::class, 'Home']);
 Route::get('/home', [MainController::class, 'Home'])->name('home');
@@ -65,3 +65,5 @@ Route::get('/admin/sports/add', [SportController::class, 'create']) -> name('spo
 Route::get('/admin/sports/filter', [SportController::class, 'filter'])->name('adminsports.filter');
 Route::delete('/admin/sports/{id}/delete', [SportController::class, 'destroy'])->name('admin.sports.destroy');
 Route::delete('/user/{id}/delete', [AuthController::class, 'destroy'])->name('user.destroy');
+Route::get('/contactus', [ContactUs::class, 'view'])->name('contactus');
+Route::post('/contactus', [ContactUs::class, 'sendEmail'])->name('contact.send');
