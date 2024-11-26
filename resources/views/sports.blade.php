@@ -40,6 +40,9 @@
         </div>
 
     </section>
+    <footer>
+        @include('footer')
+    </footer>
     <script src="{{asset('js/sport.js')}}"></script>
 </body>
 

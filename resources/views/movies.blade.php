@@ -40,6 +40,9 @@
         </div>
 
     </section>
+    <footer>
+        @include('footer')
+    </footer>
     <script src="{{asset('js/movies.js')}}"></script>
 </body>
 

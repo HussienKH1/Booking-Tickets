@@ -110,8 +110,8 @@
         @endif
     </div>
 
-    <footer class="py-6 bg-gray-900 text-center text-gray-400">
-        © {{ date('Y') }} Ticket Trail. All rights reserved.
+    <footer>
+        @include('footer')
     </footer>
 </body>
 

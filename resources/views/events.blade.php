@@ -39,6 +39,9 @@
         </div>
 
     </section>
+    <footer>
+        @include('footer')
+    </footer>
     <script >
         $(document).ready(function() {
     let filterUrl = $('#events-filter').data('url');
