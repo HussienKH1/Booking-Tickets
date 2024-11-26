@@ -39,4 +39,8 @@ class Sport extends Model
     {
         return $this->belongsTo(Sport_type::class, 'sport_type', 'name');
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'booking_sports');
+    }
 }

@@ -33,4 +33,18 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+
+    public function destroy($id)
+    {
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Delete the user
+        $user->delete();
+
+        // Return a response
+        return response()->json([
+            'message' => 'User deleted successfully.'
+        ]);
+    }
 }

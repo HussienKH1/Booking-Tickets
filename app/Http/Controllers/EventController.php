@@ -56,70 +56,117 @@ class EventController extends Controller
         return view('events', compact('events', 'genres', 'event_types', 'sporttypes'));
     }
 
-    public function eventsbooking ($id){
+
+    public function adminfilterEvents(Request $request)
+    {
+        $eventType = $request->input('typeSelect', 'all');
+        $filterOption = $request->input('filterSelect', 'all');
+
+        $query = Event::query();
+
+        if ($eventType !== 'all') {
+            $query->whereHas('eventType', function ($query) use ($eventType) {
+                $query->whereIn('id', (array) $eventType);
+            });
+        }
+
+        switch ($filterOption) {
+            case 'available':
+                $query->where('availability_status', true);
+                break;
+            case 'unavailable':
+                $query->where('availability_status', false);
+                break;
+            case 'decNaming':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'incNaming':
+                $query->orderBy('title', 'desc');
+                break;
+            case 'decPrice':
+                $query->orderBy('ticket_price', 'desc');
+                break;
+            case 'incPrice':
+                $query->orderBy('ticket_price', 'asc');
+                break;
+            default:
+                break;
+        }
+
+        $events = $query->get();
+        return view('admin.partials.eventslist', compact('events'))->render();
+    }
+
+    public function adminsearch(Request $request)
+    {
+        $query = $request->input('query');
+        $events = Event::where('title', 'like', '%' . $query . '%')->get();
+        return view('admin.partials.eventslist', compact('events'))->render();; 
+    }
+
+
+
+    public function eventsbooking($id)
+    {
         $genres = Genre::all();
         $event_types = Event_Type::all();
         $sporttypes = Sport_type::all();
         $event = Event::findOrFail($id);
-        return view ('booking', compact('genres', 'event_types', 'sporttypes', 'event'));
+        return view('booking', compact('genres', 'event_types', 'sporttypes', 'event'));
     }
 
     public function create()
     {
-        return view('events.create');
+        $event_types = Event_Type::all();
+
+        return view('admin.addevents', compact('event_types'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'event_type' => 'required|string|max:255',
-            'event_date' => 'required|date',
+            'event_type' => 'required|string|exists:event_type,name',
+            'event_date' => 'nullable|date',
             'event_time' => 'nullable|date_format:H:i',
             'location' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'ticket_price' => 'nullable|numeric',
+            'ticket_price' => 'nullable|numeric|min:0',
             'poster_url' => 'nullable|url',
             'availability_status' => 'boolean',
         ]);
 
         Event::create($request->all());
 
-        return redirect()->route('events.index')->with('success', 'Event created successfully.');
+        return redirect()->route('admin.events')->with('success', 'Event created successfully.');
     }
 
-    public function show(Event $event)
+    public function update(Request $request, $id)
     {
-        return view('events.show', compact('event'));
-    }
-
-    public function edit(Event $event)
-    {
-        return view('events.edit', compact('event'));
-    }
-
-    public function update(Request $request, Event $event)
-    {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'event_type' => 'required|string|max:255',
-            'event_date' => 'required|date',
+            'event_type' => 'required|string|exists:event_type,name',
             'event_time' => 'nullable|date_format:H:i',
             'location' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'ticket_price' => 'nullable|numeric',
+            'ticket_price' => 'nullable|numeric|min:0',
             'poster_url' => 'nullable|url',
             'availability_status' => 'boolean',
         ]);
 
-        $event->update($request->all());
-
-        return redirect()->route('events.index')->with('success', 'Event updated successfully.');
+        $event = Event::findOrFail($id);
+        $event->update($validatedData);
+        return redirect()->route('admin.events')->with('success', 'Event updated successfully.');
     }
 
-    public function destroy(Event $event)
+    public function deleteEvent($id)
     {
-        $event->delete();
-        return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
+        try {
+            $event = Event::findOrFail($id);
+            $event->delete();
+            return response()->json(['message' => 'Event deleted successfully!']);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed to delete the event.'], 500);
+        }
     }
 }

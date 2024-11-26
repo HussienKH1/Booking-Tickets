@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class, 'booking_movies');
+    }
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'booking_events');
+    }
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'booking_sports');
+    }
 }

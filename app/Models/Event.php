@@ -37,4 +37,8 @@ class Event extends Model
     {
         return $this->belongsTo(Event_Type::class, 'event_type', 'name');
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'booking_events');
+    }
 }

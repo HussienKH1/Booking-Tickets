@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Booking extends Model
+class booking_movies extends Model
 {
     use HasFactory;
-    protected $table = 'bookings';
+    protected $table = 'booking_movies';
 
     protected $fillable = [
+        'user_id',
         'full_name',
         'email',
         'phone_number',
@@ -19,8 +20,7 @@ class Booking extends Model
         'total_price',
         'vat',
         'amount_payable',
-        'type',
+        'movie_id',
         'name',
     ];
-
 }

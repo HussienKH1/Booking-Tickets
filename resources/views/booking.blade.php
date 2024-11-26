@@ -19,7 +19,7 @@
 </header>
 
 <body class="bg-[#0b0b22] text-white font-sans">
-  <form action="{{ route('booking.store') }}" method="POST" class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto p-6">
+  <form action=" {{ isset($movie) ? route('bookingmovies') : (isset($event) ? route('bookingevents') : route('bookingsports')) }}" method="POST" class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto p-6">
     @csrf
     <div class="flex-1 space-y-8">
       <div class="bg-[#1b1b33] p-6 rounded-lg shadow-lg">
@@ -33,9 +33,12 @@
 
           <label class="block text-gray-400 text-sm">
             Enter Your Email
-            <input type="email" name="email" placeholder="Enter Your Mail"
+            <input type="email" name="email"
+              value="{{ auth()->user()->email }}"
+              readonly
               class="bg-[#2a2a45] text-gray-300 p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]" />
           </label>
+
 
           <label class="block text-gray-400 text-sm md:col-span-2">
             Enter Your Phone Number

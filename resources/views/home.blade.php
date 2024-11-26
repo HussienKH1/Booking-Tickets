@@ -100,7 +100,7 @@
                         <a href="{{ route('movie_detail', $movie->id)}}" class="btn mt-4 bg-[#ff007f] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#ff007f]">
                             View Details
                         </a>
-                        <a href="{{asset ('booking')}}" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
+                        <a href="{{ route ('moviesbooking', $movie->id)}}" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
                             Book Now
                         </a>
                     </div>
@@ -133,7 +133,7 @@
                         <a href="#" class="btn mt-4 bg-[#ff007f] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#ff007f]">
                             View Details
                         </a>
-                        <a href="#" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
+                        <a href="{{ route ('eventsbooking', $event->id)}}" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
                             Book Now
                         </a>
                     </div>
@@ -184,7 +184,7 @@
                             <p class="text-gray-300 mt-2 text-sm">{{ $event->team_a }} vs {{ $event->team_b }}</p>
                             @endif
                             <p class="text-[#faaC1D] text-lg font-bold mt-3">${{ number_format($event->ticket_price, 2) }}</p>
-                            <a href="#" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
+                            <a href="{{ route ('sportsbooking', $event->id)}}" class="btn mt-4 bg-[#faaC1D] relative inline-block px-4 py-2 text-white text-xs font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D]">
                                 Book Now
                             </a>
                         </div>
