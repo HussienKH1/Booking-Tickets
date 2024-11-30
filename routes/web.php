@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactUs;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
@@ -9,7 +10,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SportController; 
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ContactUs;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 Route::get('/', [MainController::class, 'Home']);
 Route::get('/home', [MainController::class, 'Home'])->name('home');
@@ -67,3 +70,8 @@ Route::delete('/admin/sports/{id}/delete', [SportController::class, 'destroy'])-
 Route::delete('/user/{id}/delete', [AuthController::class, 'destroy'])->name('user.destroy');
 Route::get('/contactus', [ContactUs::class, 'view'])->name('contactus');
 Route::post('/contactus', [ContactUs::class, 'sendEmail'])->name('contact.send');
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
