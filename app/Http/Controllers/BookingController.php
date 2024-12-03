@@ -14,6 +14,8 @@ use App\Models\booking_sports;
 use App\Models\Event_Type;
 use App\Models\Sport_type;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 
 class BookingController extends Controller
 {

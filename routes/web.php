@@ -9,6 +9,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SportController; 
+use App\Http\Middleware\CheckAvailability;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
@@ -34,9 +35,9 @@ Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movie_detail
 Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/movies/moviesbooking/{id}', [MovieController::class, 'moviesbookig']) -> name('moviesbooking') -> middleware('auth');
-Route::get('/events/eventsbooking/{id}', [EventController::class, 'eventsbooking']) -> name('eventsbooking') -> middleware('auth');
-Route::get('/sports/sportsbooking/{id}', [SportController::class, 'sportsbooking']) -> name('sportsbooking') -> middleware('auth');
+Route::get('/movies/moviesbooking/{id}', [MovieController::class, 'moviesbookig']) -> name('moviesbooking') -> middleware(['auth', CheckAvailability::class . ':Movie']);
+Route::get('/events/eventsbooking/{id}', [EventController::class, 'eventsbooking']) -> name('eventsbooking') ->  middleware(['auth', CheckAvailability::class . ':Event']);;
+Route::get('/sports/sportsbooking/{id}', [SportController::class, 'sportsbooking']) -> name('sportsbooking') ->  middleware(['auth', CheckAvailability::class . ':Sport']);;
 Route::post('/booking/bookingmovies', [BookingController::class, 'bookingmovies'])->name('bookingmovies');
 Route::post('/booking/bookingevents', [BookingController::class, 'bookingevents'])->name('bookingevents');
 Route::post('/booking/bookingsports', [BookingController::class, 'bookingsports'])->name('bookingsports');
@@ -72,6 +73,5 @@ Route::get('/contactus', [ContactUs::class, 'view'])->name('contactus');
 Route::post('/contactus', [ContactUs::class, 'sendEmail'])->name('contact.send');
 Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
 Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');

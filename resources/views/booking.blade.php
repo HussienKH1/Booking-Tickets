@@ -11,6 +11,8 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
   <title>Booking</title>
 </head>
 
@@ -60,45 +62,21 @@
         </div>
       </div>
       <div class="bg-[#1b1b33] p-6 rounded-lg shadow-lg">
-        <h2 class="text-xl font-bold">Payment Option</h2>
-        <div class="mt-6 space-y-4">
-          <div class="space-y-4 bg-[#1a1a33] p-6 rounded-md shadow-md max-w-md mx-auto">
-            <label class="block text-gray-400 text-sm">
-              Card Details
-              <div class="relative">
-                <input type="text" name="card_details" placeholder="Card Details"
-                  class="bg-[#2a2a45] text-gray-300 p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]" />
-                <span class="absolute inset-y-0 right-3 flex items-center text-gray-400">
-                  <ion-icon name="lock-closed-outline"></ion-icon>
-                </span>
-              </div>
-            </label>
-
-            <label class="block text-gray-400 text-sm">
-              Name on the Card
-              <input type="text" name="name_on_card" placeholder="Name on the Card"
-                class="bg-[#2a2a45] text-gray-300 p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]" />
-            </label>
-
-            <div class="grid grid-cols-2 gap-4">
-              <label class="block text-gray-400 text-sm">
-                Expiration
-                <input type="text" name="expiration_date" placeholder="MM/YY"
-                  class="bg-[#2a2a45] text-gray-300 p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]" />
-              </label>
-              <label class="block text-gray-400 text-sm">
-                CVV
-                <input type="text" name="cvv" placeholder="CVV"
-                  class="bg-[#2a2a45] text-gray-300 p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]" />
-              </label>
+            <h2 class="text-xl font-bold">Payment Option</h2>
+            <div class="mt-6 space-y-4">
+                <div class="space-y-4 bg-[#1a1a33] p-6 rounded-md shadow-md max-w-md mx-auto">
+                    <label class="block text-gray-400 text-sm">
+                        Card Details
+                        <div id="card-element" class="bg-[#2a2a45] p-3 w-full rounded-md shadow-sm border border-[#383867] focus:outline-none focus:ring-2 focus:ring-[#6b6bcc]"></div>
+                    </label>
+                </div>
+                <button class="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-2 rounded-lg" id="payment-button">
+                    Make Payment
+                </button>
             </div>
-          </div>
-          <button class="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-2 rounded-lg" type="submit">
-            Make Payment
-          </button>
-          <p class="text-gray-300 text-sm mt-4">By clicking "Make Payment" you agree to the <a href="#" class="text-purple-400">Terms and Conditions</a>.</p>
         </div>
-      </div>
+    </div>
+    </div>
     </div>
     <div class="w-full lg:w-1/3 bg-[#1b1b33] p-6 rounded-lg shadow-md text-white">
       <h2 class="text-xl font-semibold border-b border-gray-700 pb-2">Booking Summary</h2>
@@ -162,6 +140,7 @@
   </div>
   @endif
   <script src="{{asset('js/booking.js')}}"></script>
+  <script src="{{asset('js/stripe.js')}}"></script>
 </body>
 
 </html>
