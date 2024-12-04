@@ -44,6 +44,29 @@
         @include('footer')
     </footer>
     <script src="{{asset('js/sport.js')}}"></script>
+    @if(session('error'))
+        <div id="errorModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+                <h2 class="text-xl font-semibold mb-4">Oops!</h2>
+                <p class="text-gray-700 mb-4">{{ session('error') }}</p>
+                <button id="closeModal" class="bg-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-600 focus:outline-none">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('errorModal').style.display = 'flex';
+
+            document.getElementById('closeModal').addEventListener('click', function() {
+                document.getElementById('errorModal').style.display = 'none';
+            });
+
+            setTimeout(function() {
+                document.getElementById('errorModal').style.display = 'none';
+            }, 5000);
+        </script>
+    @endif
 </body>
 
 </html>
