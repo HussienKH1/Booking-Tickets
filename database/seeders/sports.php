@@ -66,7 +66,7 @@ class sports extends Seeder
                 'event_date' => '2024-07-17',
                 'event_time' => '09:00:00',
                 'location' => 'Pyrenees Mountains, France',
-                'ticket_price' => 0.00,
+                'ticket_price' => 120.00,
                 'poster_url' => 'https://d2779tscntxxsw.cloudfront.net/66900fb511ef8.png',
                 'availability_status' => true,
             ],
