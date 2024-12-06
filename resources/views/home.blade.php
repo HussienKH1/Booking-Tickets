@@ -32,7 +32,7 @@
                         <span class="text-2xl font-semibold tracking-wide leading-snug drop-shadow-md slide-text slide-down">
                             Secure Your Tickets Now for an Unforgettable Experience!
                         </span>
-                        <a href="{{asset ('movies')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
+                        <a href="{{asset ('events')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
                             Book Now
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         <span class="text-2xl font-semibold tracking-wide leading-snug drop-shadow-md slide-text slide-down">
                             Book Your Tickets Now!
                         </span>
-                        <a href="{{asset ('events')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
+                        <a href="{{asset ('movies')}}" class="btn bg-[#faaC1D] mt-10 relative inline-block px-5 py-3 text-white text-base font-medium overflow-hidden rounded-lg z-10 transition-colors duration-700 ease-linear hover:text-[#faaC1D] slide-text slide-down">
                             Book Now
                         </a>
                     </div>
